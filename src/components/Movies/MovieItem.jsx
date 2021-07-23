@@ -14,7 +14,7 @@ export class MovieItem extends Component {
                     alt={item.title}
                 />
                 <div className="card-body">
-                    <Link className="card-title" to={`/movie/${item.id}`}>
+                    <Link style={{textDecoration: 'none', fontWeight: '600'}} className="card-title" to={`/movie/${item.id}`}>
                         {item.title}
                     </Link>
                     <div className="card-text">

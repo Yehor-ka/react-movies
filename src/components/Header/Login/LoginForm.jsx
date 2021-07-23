@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { API_KEY_3, API_URL, fetchAPI } from '../../../api/api';
 import classNames from 'classnames';
-import AppContextHOC from '../../HOC/AppContextHOC';
+import AppContextHOC from '../../../hoc/AppContextHOC';
+import { fetchAuth } from '../../../redux/auth/auth.actions';
 
 export class LoginForm extends Component {
   state = {
@@ -94,7 +95,7 @@ export class LoginForm extends Component {
             submitting: false,
           },
           () => {
-            this.props.updateAuth(user, session_id);
+            this.props.updateAuth({user, session_id});
           },
         );
       })

@@ -1,6 +1,6 @@
-import Cookies from 'universal-cookie';
+import * as types from './auth.types'
+import { cookies } from '../../utils/cookies';
 
-const cookies = new Cookies();
 
 const initialState = {
   user: null,
@@ -9,18 +9,13 @@ const initialState = {
 
 const reducerApp = (state = initialState, action) => {
   switch (action.type) {
-    case 'UPDATE_AUTH':
-      cookies.set('session_id', action.payload.session_id, {
-        path: '/',
-        maxAge: 2592000,
-      });
+    case types.UPDATE_AUTH:
       return {
         ...state,
         user: action.payload.user,
         session_id: action.payload.session_id,
       };
-    case 'LOGOUT':
-      cookies.remove('session_id');
+    case types.LOGOUT:
       return {
         ...state,
         user: null,
